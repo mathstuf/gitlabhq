@@ -87,7 +87,8 @@ Triggered when you create (or delete) tags to the repository.
 
 ## Issues events
 
-Triggered when a new issue is created or an existing issue was updated/closed/reopened.
+Triggered when a new issue is created, an existing issue was
+updated/closed/reopened, or a user note is added.
 
 **Request body:**
 
@@ -121,7 +122,8 @@ Triggered when a new issue is created or an existing issue was updated/closed/re
 
 ## Merge request events
 
-Triggered when a new merge request is created or an existing merge request was updated/merged/closed.
+Triggered when a new merge request is created, an existing merge request was
+updated/merged/closed, or a user comment is added.
 
 **Request body:**
 
