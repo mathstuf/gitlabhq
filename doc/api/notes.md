@@ -31,7 +31,8 @@ Parameters:
       "state": "active",
       "created_at": "2013-09-30T13:46:01Z"
     },
-    "created_at": "2013-10-02T09:22:45Z"
+    "created_at": "2013-10-02T09:22:45Z",
+    "editable": false
   },
   {
     "id": 305,
@@ -45,7 +46,8 @@ Parameters:
       "state": "active",
       "created_at": "2013-09-30T13:46:01Z"
     },
-    "created_at": "2013-10-02T09:56:03Z"
+    "created_at": "2013-10-02T09:56:03Z",
+    "editable": true
   }
 ]
 ```

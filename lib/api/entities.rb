@@ -187,6 +187,7 @@ module API
       expose :attachment_identifier, as: :attachment
       expose :author, using: Entities::UserBasic
       expose :created_at
+      expose :editable?, as: :editable
     end
 
     class MRNote < Grape::Entity
