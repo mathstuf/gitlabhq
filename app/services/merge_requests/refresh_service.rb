@@ -78,6 +78,7 @@ module MergeRequests
       merge_requests.each do |merge_request|
         Note.create_new_commits_note(merge_request, merge_request.project,
                                      @current_user, @commits)
+        execute_hooks(merge_request, 'push')
       end
     end
 

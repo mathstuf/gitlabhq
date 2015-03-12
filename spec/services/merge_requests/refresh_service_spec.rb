@@ -7,6 +7,8 @@ describe MergeRequests::RefreshService do
 
   describe :execute do
     before do
+      allow(service).to receive(:execute_hooks)
+
       @user = create(:user)
       group = create(:group)
       group.add_owner(@user)
@@ -63,6 +65,11 @@ describe MergeRequests::RefreshService do
       it { expect(@merge_request).to be_open }
       it { expect(@fork_merge_request.notes.last.note).to include('new commit') }
       it { expect(@fork_merge_request).to be_open }
+
+      it 'should execute hooks with push action' do
+        expect(service).to have_received(:execute_hooks).
+                               with(@merge_request, 'push')
+      end
     end
 
     context 'push to fork repo target branch' do

@@ -123,7 +123,7 @@ updated/closed/reopened, or a user note is added.
 ## Merge request events
 
 Triggered when a new merge request is created, an existing merge request was
-updated/merged/closed, or a user comment is added.
+updated/merged/closed, a user comment is added, or the source branch changes.
 
 **Request body:**
 
