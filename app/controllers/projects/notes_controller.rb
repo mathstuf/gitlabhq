@@ -23,6 +23,14 @@ class Projects::NotesController < Projects::ApplicationController
   def create
     @note = Notes::CreateService.new(project, current_user, note_params).execute
 
+    unless @note.system
+      if @note.for_issue?
+        Issues::NoteService.new(project, current_user).execute(@note.noteable)
+      elsif @note.for_merge_request?
+        MergeRequests::NoteService.new(project, current_user).execute(@note.noteable)
+      end
+    end
+
     respond_to do |format|
       format.json { render_note_json(@note) }
       format.html { redirect_to :back }

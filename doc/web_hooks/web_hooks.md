@@ -103,7 +103,8 @@ X-Gitlab-Event: Tag Push Hook
 
 ## Issues events
 
-Triggered when a new issue is created or an existing issue was updated/closed/reopened.
+Triggered when a new issue is created, an existing issue was
+updated/closed/reopened, or a user note is added.
 
 **Request header**:
 
@@ -143,7 +144,7 @@ X-Gitlab-Event: Issue Hook
 
 ## Merge request events
 
-Triggered when a new merge request is created, an existing merge request was updated/merged/closed or a commit is added in the source branch.
+Triggered when a new merge request is created, an existing merge request was updated/merged/closed, a commit is added in the source branch, or a user comment is added.
 
 **Request header**:
 
