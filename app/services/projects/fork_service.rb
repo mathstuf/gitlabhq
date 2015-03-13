@@ -45,6 +45,7 @@ module Projects
               raise 'forking failed in gitlab-shell'
             end
             project.ensure_satellite_exists
+            system_hook_service.execute_hooks_for(project, :create)
           end
         rescue => ex
           project.errors.add(:base, 'Fork transaction failed.')
