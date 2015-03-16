@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150213121042) do
     t.string   "home_page_url"
     t.integer  "default_branch_protection", default: 2
     t.boolean  "twitter_sharing_enabled",   default: true
+    t.boolean  "exclude_forks_from_limit",  default: false
   end
 
   create_table "broadcast_messages", force: true do |t|

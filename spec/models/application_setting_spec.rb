@@ -4,6 +4,7 @@
 #
 #  id                         :integer          not null, primary key
 #  default_projects_limit     :integer
+#  exclude_forks_from_limit   :boolean
 #  default_branch_protection  :integer
 #  signup_enabled             :boolean
 #  signin_enabled             :boolean

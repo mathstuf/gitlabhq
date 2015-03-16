@@ -31,6 +31,10 @@
       .col-sm-10
         = f.number_field :default_projects_limit, class: 'form-control'
     .form-group
+      = f.label :exclude_forks_from_limit, class: 'control-label'
+      .col-sm-10
+        = f.check_box :exclude_forks_from_limit, class: 'checkbox'
+    .form-group
       = f.label :default_branch_protection, class: 'control-label'
       .col-sm-10
         = f.select :default_branch_protection, options_for_select(Gitlab::Access.protection_options, @application_setting.default_branch_protection), {}, class: 'form-control'

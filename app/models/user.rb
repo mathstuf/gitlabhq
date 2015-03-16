@@ -383,7 +383,11 @@ class User < ActiveRecord::Base
   end
 
   def projects_limit_left
-    projects_limit - personal_projects.count
+    if gitlab_config.exclude_forks_from_limit
+      projects_limit - personal_projects.where(forked?: false).count
+    else
+      projects_limit - personal_projects.count
+    end
   end
 
   def projects_limit_percent

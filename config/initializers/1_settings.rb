@@ -91,6 +91,7 @@ Settings['issues_tracker']  ||= {}
 #
 Settings['gitlab'] ||= Settingslogic.new({})
 Settings.gitlab['default_projects_limit'] ||= 10
+Settings.gitlab['exclude_forks_from_limit'] = false if Settings.gitlab['exclude_forks_from_limit'].nil?
 Settings.gitlab['default_branch_protection'] ||= 2
 Settings.gitlab['default_can_create_group'] = true if Settings.gitlab['default_can_create_group'].nil?
 Settings.gitlab['default_theme'] = Gitlab::Theme::MARS if Settings.gitlab['default_theme'].nil?
@@ -192,6 +193,7 @@ Settings.rack_attack.git_basic_auth['bantime'] ||= 1.hour
 #
 if Rails.env.test?
   Settings.gitlab['default_projects_limit']   = 42
+  Settings.gitlab['exclude_forks_from_limit'] = false
   Settings.gitlab['default_can_create_group'] = true
   Settings.gitlab['default_can_create_team']  = false
 end
