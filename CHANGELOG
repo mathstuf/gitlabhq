@@ -46,6 +46,7 @@ v 8.0.0 (unreleased)
   - Fix highlighting of deleted lines in diffs.
   - Added service API endpoint to retrieve service parameters (Petheő Bence)
   - Add FogBugz project import (Jared Szechy)
+  - Support creating merge requests to forks in the same "network" (Ben Boeckel)
 
 v 7.14.3
   - No changes

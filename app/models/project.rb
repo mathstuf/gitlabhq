@@ -689,6 +689,35 @@ class Project < ActiveRecord::Base
     update_attribute(:commit_count, repository.commit_count)
   end
 
+  def forks(user)
+    ProjectsFinder.new.execute(user).select { |project| project.forked_from?(self) }
+  end
+
+  def fork_network(user)
+    forks = [self]
+    network = []
+
+    current = self
+    while not current.forked_from_project.nil?
+      forks.push(current.forked_from_project)
+      current = current.forked_from_project
+    end
+
+    while not forks.empty?
+      member = forks.shift
+      network.push(member)
+
+      member_forks = member.forks(user)
+      forks.push(*member_forks.reject { |f| network.include?(f) })
+    end
+
+    network
+  end
+
+  def merge_request_network(user)
+    self.fork_network(user).select { |p| p.merge_requests_enabled }
+  end
+
   def forks_count
     ForkedProjectLink.where(forked_from_project_id: self.id).count
   end
