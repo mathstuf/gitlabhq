@@ -154,6 +154,9 @@ class MergeRequest < ActiveRecord::Base
       # we should check if source project is actually a fork of target project
       if source_project.forked_from?(target_project)
         true
+      # check that both projects are forks of the same project
+      elsif target_project.forked? and source_project.forked_from?(target_project.forked_from_project)
+        true
       else
         errors.add :validate_fork,
                    'Source project is not a fork of target project'
