@@ -28,6 +28,7 @@
 #  import_type            :string(255)
 #  import_source          :string(255)
 #  commit_count           :integer          default(0)
+#  managed                :boolean          default(FALSE), not null
 #
 
 require 'carrierwave/orm/activerecord'
@@ -44,6 +45,7 @@ class Project < ActiveRecord::Base
   extend Enumerize
 
   default_value_for :archived, false
+  default_value_for :managed, false
   default_value_for :visibility_level, gitlab_config_features.visibility_level
   default_value_for :issues_enabled, gitlab_config_features.issues
   default_value_for :merge_requests_enabled, gitlab_config_features.merge_requests
@@ -659,6 +661,14 @@ class Project < ActiveRecord::Base
 
   def unarchive!
     update_attribute(:archived, false)
+  end
+
+  def manage!
+    update_attribute(:managed, true)
+  end
+
+  def unmanage!
+    update_attribute(:managed, false)
   end
 
   def change_head(branch)

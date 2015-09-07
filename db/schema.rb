@@ -387,6 +387,7 @@ ActiveRecord::Schema.define(version: 20150824002011) do
     t.string   "import_type"
     t.string   "import_source"
     t.integer  "commit_count",           default: 0
+    t.boolean  "managed",                default: false,    null: false
   end
 
   add_index "projects", ["created_at", "id"], name: "index_projects_on_created_at_and_id", using: :btree

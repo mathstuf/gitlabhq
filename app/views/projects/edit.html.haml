@@ -37,6 +37,15 @@
               = f.text_field :tag_list, maxlength: 2000, class: "form-control"
               %p.help-block Separate tags with commas.
 
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              .checkbox
+                = f.label :managed do
+                  = f.check_box :managed
+                  %strong Managed
+                  %br
+                  %span.descr Merging is managed externally (robot or manually).
+
           %fieldset.features
             %legend
               Features:
