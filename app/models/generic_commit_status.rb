@@ -10,6 +10,8 @@
 #  cancel_url        :text
 #  download_url      :text
 #  retry_url         :text
+#  information_url   :text
+#  information_label :text
 #
 
 class GenericCommitStatus < CommitStatus

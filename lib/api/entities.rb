@@ -234,6 +234,7 @@ module API
              :created_at, :started_at, :finished_at, :allow_failure, :stage
       expose :show_warning?, as: :show_warning
       expose :cancel_url, :retry_url, :download_url
+      expose :information_url, :information_label,
       expose :author, using: Entities::UserBasic
     end
 

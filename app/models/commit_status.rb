@@ -81,6 +81,14 @@ class CommitStatus < ActiveRecord::Base
     end
   end
 
+  def information_url
+    nil
+  end
+
+  def information_label
+    nil
+  end
+
   def cancel_url
     nil
   end

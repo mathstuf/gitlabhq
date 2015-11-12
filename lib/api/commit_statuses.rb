@@ -47,6 +47,8 @@ module API
       #   cancel_url (optional) - A URL for cancelling the build
       #   download_url (optional) - A URL for downloading build artifacts
       #   retry_url (optional) - A URL to retry the build
+      #   information_url (optional) - An extra URL to add to the status
+      #   information_label (optional) - A label for the extra URL
       # Examples:
       #   POST /projects/:id/statuses/:sha
       post ':id/statuses/:sha' do
@@ -81,6 +83,8 @@ module API
         status.cancel_url = params[:cancel_url] || nil
         status.download_url = params[:download_url] || nil
         status.retry_url = params[:retry_url] || nil
+        status.information_url = params[:information_url] || nil
+        status.information_label = params[:information_label] || nil
 
         if status.save
           present status, with: Entities::CommitStatus

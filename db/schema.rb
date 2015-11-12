@@ -308,6 +308,8 @@ ActiveRecord::Schema.define(version: 20151109100728) do
     t.text    "tags",               default: "external"
     t.boolean "show_warning",       default: false
     t.boolean "allow_failure",      default: false
+    t.text    "information_url"
+    t.text    "information_label",  default: "information"
     t.text    "cancel_url"
     t.text    "download_url"
     t.text    "retry_url"
