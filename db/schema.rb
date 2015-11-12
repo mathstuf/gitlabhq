@@ -303,6 +303,16 @@ ActiveRecord::Schema.define(version: 20151109100728) do
     t.datetime "updated_at"
   end
 
+  create_table "generic_commit_status", force: true do |t|
+    t.text    "stage",              default: "external"
+    t.text    "tags",               default: "external"
+    t.boolean "show_warning",       default: false
+    t.boolean "allow_failure",      default: false
+    t.text    "cancel_url"
+    t.text    "download_url"
+    t.text    "retry_url"
+  end
+
   create_table "deploy_keys_projects", force: true do |t|
     t.integer  "deploy_key_id", null: false
     t.integer  "project_id",    null: false

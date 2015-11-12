@@ -1,15 +1,24 @@
-class GenericCommitStatus < CommitStatus
-  before_validation :set_default_values
+# == Schema Information
+#
+# Table name: commit_status
+#
+#  id                :integer          not null, primary key
+#  stage             :text
+#  tags              :text
+#  show_warning      :boolean
+#  allow_failure     :boolean
+#  cancel_url        :text
+#  download_url      :text
+#  retry_url         :text
+#
 
+class GenericCommitStatus < CommitStatus
   # GitHub compatible API
   alias_attribute :context, :name
 
-  def set_default_values
-    self.context ||= 'default'
-    self.stage ||= 'external'
-  end
+  acts_as_taggable
 
-  def tags
-    [:external]
+  def tag_list
+    tags.split(',')
   end
 end

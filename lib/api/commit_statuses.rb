@@ -40,6 +40,13 @@ module API
       #   target_url (optional) - The target URL to associate with this status
       #   description (optional) - A short description of the status
       #   name or context (optional) - A string label to differentiate this status from the status of other systems. Default: "default"
+      #   stage (optional) - A description of the state of the status
+      #   tags (optional) - A comma-separate list of tags for the status
+      #   show_warning (optional) - A boolean of whether the status should indicate warnings or not
+      #   allow_failure (optional) - A boolean of whether the status is allowed to fail or not
+      #   cancel_url (optional) - A URL for cancelling the build
+      #   download_url (optional) - A URL for downloading build artifacts
+      #   retry_url (optional) - A URL to retry the build
       # Examples:
       #   POST /projects/:id/statuses/:sha
       post ':id/statuses/:sha' do
@@ -68,6 +75,12 @@ module API
         else
           status.status = params[:state].to_s
         end
+
+        status.show_warning = params[:show_warning] || false
+        status.allow_failure = params[:allow_failure] || false
+        status.cancel_url = params[:cancel_url] || nil
+        status.download_url = params[:download_url] || nil
+        status.retry_url = params[:retry_url] || nil
 
         if status.save
           present status, with: Entities::CommitStatus
